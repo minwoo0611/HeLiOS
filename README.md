@@ -1,7 +1,7 @@
-# HeLiOS: Heterogeneous LiDAR Place Recognition via Overlap-based Learning and Local Spherical Transformer
+# HeLiOS🌞: Heterogeneous LiDAR Place Recognition via Overlap-based Learning and Local Spherical Transformer
 
 
-**(Under Review) [IEEE ICRA 25]** This repository is the official repository for for **HeLiOS**.
+**(Accepted) [IEEE ICRA 25]** This repository is the official repository for for **HeLiOS🌞** **[[Paper]](https://minwoo0611.github.io/publications/icra2025-helios.pdf)**.
 
   <a href="https://scholar.google.co.kr/citations?user=aKPTi7gAAAAJ&hl=ko" target="_blank">Minwoo Jung</a><sup></sup>,
   <a href="https://scholar.google.co.kr/citations?user=I2pNZDkAAAAJ&hl=ko" target="_blank">Sangwoo Jung</a><sup></sup>,
