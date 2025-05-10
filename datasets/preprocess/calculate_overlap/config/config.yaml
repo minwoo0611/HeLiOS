@@ -1,0 +1,13 @@
+base_path: ../../../../data/
+runs_folder: training/
+filename: trajectory.csv
+dir_txt: overlap_matrix_training.txt
+folder_list:                      # if the folder_list is empty, it uses all folders in run_folder.
+  - DCC04-Aeva
+  - DCC04-Ouster
+  - DCC04-Avia
+  - DCC04-Velodyne
+  - DCC05-Aeva
+  - DCC05-Ouster
+  - DCC05-Avia
+  - DCC05-Velodyne

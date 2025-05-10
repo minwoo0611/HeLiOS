@@ -1,0 +1,17 @@
+[MODEL]
+model=HeLiOS
+planes=64,128,64,32
+layers=1,1,1,1
+num_top_down=2
+conv0_kernel_size=5
+feature_size=256
+
+coordinates=cartesian
+quantization_step=0.01
+radial_window_size=1.8,1.8,10
+expansion_rate=1.5
+voxel_window_size=4,4,4
+
+num_clusters=64
+cluster_dim=128
+use_token=True
