@@ -1,0 +1,29 @@
+Path:
+  binPath: "/RAW/DCC04/LiDAR/Aeva/"
+  trajPath: "/RAW/DCC04/LiDAR_GT/Aeva_gt.txt"
+  savePath: "/training/"
+
+Undistort:
+  numIntervals: 250
+  undistortFlag: True
+
+Save:
+  downSampleFlag: True       # True or False
+  downSampleVoxelSize: 0.1   # meter, 
+  downsamplePointSize: 8192  # if 0, only voxel grid downsampling
+  normalizeFlag: True        # True or False, make the point cloud to be in the unit sphere
+
+  saveAs: "bin"       # "bin" or "pcd"
+  saveName: "Timestamp"   # "Index" or "Timestamp"
+  
+  cropFlag: True # True or False, crop the point cloud
+  cropSize: 100 # meter, -100 ~ 100
+  
+  LiDAR: 3 # 0: OUSTER, 1: VELODYNE, 2: LIVOX, 3: AEVA
+  distanceThreshold: 3 # keyFrame selection, meter
+  
+  # if accumulatedSize = 3, accumulatedStep = 4, then 0~2, 4~6, 8~10, ...
+  accumulatedSize: 1   # Frame Accumulation, 1: no accumulation
+  accumulatedStep: 1   # Frame Skip, 1: no skip, 2: every 2 frames, 3: every 3 frames, ...
+  
+

@@ -5,7 +5,7 @@ dataset_folder = data
 model_name = HeLiOS_default_trainning
 num_workers = 4
 batch_size = 2048
-batch_split_size = 200
+batch_split_size = 64
 val_batch_size = 256
 
 lr = 1e-3
@@ -13,8 +13,8 @@ epochs = 80
 scheduler_milestones = 40, 70
 aug_mode = 1
 weight_decay = 1e-4
-train_file = helipr_training_5.pickle
-val_file = helipr_validation_5.pickle
+train_file = training.pickle
+val_file = validation.pickle
 eval_db_file = Roundabout_evaluation_db.pickle
 eval_query_file = Roundabout_evaluation_query.pickle
 

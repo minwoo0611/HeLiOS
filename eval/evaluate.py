@@ -20,7 +20,7 @@ from misc.utils import TrainingParams
 from datasets.pnv_raw import PNVPointCloudLoader
 
 
-DATASET_FOLDER = "/mydata/ssd_8T/minwoo/PR"
+DATASET_FOLDER = "data/"
 
 def evaluate(
     model: torch.nn.Module,
@@ -42,8 +42,8 @@ def evaluate(
     Returns:
         Dictionary mapping location names to evaluation statistics.
     """
-    eval_database_files = ['helipr_Roundabout_validation_crossloc_5_db.pickle']
-    eval_query_files = ['helipr_Roundabout_validation_crossloc_5_query.pickle']
+    eval_database_files = [params.eval_db_file]
+    eval_query_files = [params.eval_query_file]
     assert len(eval_database_files) == len(eval_query_files), "Mismatch in database and query file counts"
 
     stats = {}
@@ -403,6 +403,7 @@ def perform_place_recognition(
     auc_score = np.trapz(sorted_precisions, sorted_recalls)
 
     final_recall = recall_cumulative[0] if recall_cumulative.size > 0 else 0
+    print(f"{db_idx} - {query_idx}:")
     print(f"Recall@1: {final_recall:.4f}%")
     print(f"F1 Score: {max_f1:.4f}")
     print(f"AUC Score: {auc_score:.4f}")

@@ -27,9 +27,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     libgl1-mesa-glx \
     libopenmpi-dev \
+    libpcl-dev \
+    libyaml-cpp-dev \
+    gcc-8 g++-8 \
     mpich \
     && rm -rf /var/lib/apt/lists/*
 
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 800 --slave /usr/bin/g++ g++ /usr/bin/g++-8
 # Upgrade pip
 RUN pip install --upgrade pip setuptools==59.5.0
 RUN conda install -c conda-forge mpi4py mpich -y

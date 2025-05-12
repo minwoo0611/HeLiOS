@@ -2,7 +2,7 @@ import numpy as np
 import os
 import pandas as pd
 import pickle
-from base_datasets import TrainingTuple
+
 
 def construct_query_dict(df_centroids, filename, overlap_matrix_file_path, threshold):
     queries = {}
@@ -46,7 +46,8 @@ runs_folder = "training/"
 filename = "trajectory.csv"
 pointcloud_fols = "/LiDAR/"
 overlap_matrix_file_path = base_path + "overlap_matrix_training.txt"
-save_path = base_path + "helipr_training_5.pickle"
+save_path = base_path + "training.pickle"
+overlap_threshold = 0.5
 
 all_folders = sorted(os.listdir(
     os.path.join(base_path, runs_folder)))
@@ -81,9 +82,9 @@ construct_query_dict(df_train, save_path, overlap_matrix_file_path, 0.5)
 
 
 runs_folder = "validation/"
-overlap_matrix_file_path = base_path + "overlap_matrix_validation.txt"
-save_path = base_path + "helipr_validation_5.pickle"
-validation_set = ["Roundabout01", "Roundabout02"]
+overlap_matrix_file_path = base_path + "overlap_matrix_Roundabout.txt"
+save_path = base_path + "validation.pickle"
+validation_set = ["Roundabout01"] # it can be sequence or sequence-sensor like (Roundabout01-Ouster). It can include multiple sequence-sensor
 
 all_folders = sorted(os.listdir(
     os.path.join(base_path, runs_folder)))
@@ -111,7 +112,7 @@ for folder in folders:
         df_val = pd.concat([df_val, row_df], ignore_index=True)
 
 print("Number of validation submaps: "+str(len(df_val['file'])))
-construct_query_dict(df_val, save_path, overlap_matrix_file_path, 0.5)
+construct_query_dict(df_val, save_path, overlap_matrix_file_path, overlap_threshold)
 
 
 

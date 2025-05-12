@@ -200,11 +200,10 @@ void monitorProgress(size_t totalOperations) {
 
 void processSubset(const std::vector<Location>& df_env, std::vector<std::vector<double>>& overlapMatrix, size_t startIdx, size_t endIdx) {
     for (size_t i = startIdx; i < endIdx; ++i) {
-        auto cloud1 = load_pc(replaceString(df_env[i].file, "/LiDAR/", "/LiDAR_transformed/"));
+        auto cloud1 = load_pc(df_env[i].file);
 
         for (size_t j = i; j < df_env.size(); ++j) { // Start from i to process only the upper triangle
-            if(i != 0 )
-                continue;
+
             if (i == j) {
                 overlapMatrix[i][j] = 1.0; // Maximum overlap with itself
                 overlapMatrix[j][i] = 1.0;
@@ -217,7 +216,7 @@ void processSubset(const std::vector<Location>& df_env, std::vector<std::vector<
                 continue;
             }
 
-            auto cloud2 = load_pc(replaceString(df_env[j].file, "/LiDAR/", "/LiDAR_transformed/"));
+            auto cloud2 = load_pc(df_env[j].file);
 
             pcl::PointCloud<pcl::PointXYZ>::Ptr cloud1_temp(new pcl::PointCloud<pcl::PointXYZ>);
             pcl::PointCloud<pcl::PointXYZ>::Ptr cloud2_temp(new pcl::PointCloud<pcl::PointXYZ>);

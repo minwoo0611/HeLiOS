@@ -5,16 +5,13 @@ import pandas as pd
 from sklearn.neighbors import KDTree
 import pickle
 
-
-
-
 def output_to_file(output, filename):
     with open(filename, 'wb') as handle:
         pickle.dump(output, handle, protocol=pickle.HIGHEST_PROTOCOL)
     print("Done ", filename)
 
 
-def construct_query_and_database_sets(base_path, runs_folder, folders, pointcloud_fols, filename, overlap_matrix_file_path, db):
+def construct_query_and_database_sets(base_path, runs_folder, folders, pointcloud_fols, filename, overlap_matrix_file_path, db, threshold):
     database_trees = []
     for folder in folders:
         df_database = pd.DataFrame(columns=['file', 'northing', 'easting'])
@@ -60,7 +57,7 @@ def construct_query_and_database_sets(base_path, runs_folder, folders, pointclou
                 index = []
                 
                 for j in range(len(database_sets[k])):
-                    if(float(overlap[test_sets[i][key]['idx'], database_sets[k][j]['idx']]) > 0.5):
+                    if(float(overlap[test_sets[i][key]['idx'], database_sets[k][j]['idx']]) > threshold):
                         index.append(j)
 
                 test_sets[i][key][k] = index
@@ -80,9 +77,10 @@ base_path = "../../data/"
 runs_folder = "validation/"
 filename = "trajectory.csv"
 pointcloud_fols = "/LiDAR/"
-environment = "Roundabout"
+environment = "Roundabout" # query environment
 overlap_matrix_file_path = base_path + "overlap_matrix_" + environment + ".txt"
-db = ["Roundabout01-Ouster"]
+db = ["Roundabout01-Ouster"] # db sequence-sensor in environment. It can include multiple sequence-sensor
+overlap_threshold = 0.5
 
 folders = []
 all_folders = sorted(os.listdir(
@@ -95,5 +93,5 @@ for folder in all_folders:
 print("query: ", folders)
 print("db: ", db)
 construct_query_and_database_sets(base_path, runs_folder, folders, pointcloud_fols,
-                                  filename, overlap_matrix_file_path, db)
+                                  filename, overlap_matrix_file_path, db, overlap_threshold)
 

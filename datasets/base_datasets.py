@@ -42,7 +42,7 @@ class TrainingDataset(Dataset):
     def __init__(self, dataset_path, query_filename, transform=None, set_transform=None):
         # remove_zero_points: remove points with all zero coords
         assert os.path.exists(dataset_path), 'Cannot access dataset path: {}'.format(dataset_path)
-        self.dataset_path = "/mydata/ssd_8T/minwoo/PR"
+        self.dataset_path = dataset_path
         self.query_filepath = os.path.join(dataset_path, query_filename)
         assert os.path.exists(self.query_filepath), 'Cannot access query file: {}'.format(self.query_filepath)
 
