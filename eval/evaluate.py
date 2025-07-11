@@ -283,7 +283,10 @@ def process_query(
         ]
     else:
         filtered_indices, filtered_distances = indices, distances
-
+        
+    if len(filtered_indices) == 0:
+        return None
+        
     # Compute recall indicator
     recall_indicator = np.zeros(num_neighbors)
     for j, idx in enumerate(filtered_indices):
@@ -292,7 +295,7 @@ def process_query(
         if idx in filtered_neighbors:
             recall_indicator[j] = 1
             break
-
+ 
     # Compute one-percent recall
     valid_indices = filtered_indices[:threshold]
     one_percent_flag = 1 if set(valid_indices).intersection(filtered_neighbors) else 0
