@@ -156,7 +156,7 @@ class HeLiOS(nn.Module):
         super().__init__()
         self.backbone = backbone
         self.pooling = GeM(input_dim=in_dim)
-        self.agg = SALAD(in_dim, num_clusters, cluster_dim, in_dim, use_token)
+        self.agg = SALAD(num_channels=in_dim, num_clusters=num_clusters, cluster_dim=cluster_dim, token_dim=in_dim, use_token=use_token)
         self.activation = nn.ReLU()
 
     def forward(self, batch):
