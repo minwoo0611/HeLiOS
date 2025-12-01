@@ -60,7 +60,7 @@ cd HeLiOS
 
 #### 3. Pre-process Data for Training and Evaluation
 
-Prepare the data by following these steps. Alternatively, you can download pre-processed outputs for steps 3.1 to 3.5 from [Google Drive](https://drive.google.com/drive/u/1/folders/10wXhjOnKlhkxm3a1Td34YdtNJCRFxIoZ). The overlap file for the training dataset includes full sequences of DCC04-06, KAIST04-06, and Riverside04-06 for Aeva, Avia, Ouster, and Velodyne. If you wish to test custom settings, please follow the below pipelines.
+Prepare the data by following these steps. Alternatively, you can download pre-processed outputs for steps 3.1 to 3.5 from [Google Drive](https://drive.google.com/drive/folders/1b2HFFEKnPkcqjnwOQbTxoGJHfxrb3KwS?usp=sharing). The overlap file for the training dataset includes full sequences of DCC04-06, KAIST04-06, and Riverside04-06 for Aeva, Avia, Ouster, and Velodyne. If you wish to test custom settings, please follow the below pipelines.
 
 #### 3-1 Download the HeLiPR Dataset
 
